@@ -25,4 +25,4 @@ Log in
 
 Search for products on the website
     Input Text    name:query    playstation 5
-    Click Button    name="submit"
+    Click Button    name:submit
