@@ -27,3 +27,5 @@ Log in
 Search for products on the website
     Input Text    search bar    playstation
     Click Button    accessibility-search-button
+
+Select wanted products
