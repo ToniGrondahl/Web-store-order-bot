@@ -6,10 +6,13 @@ Library             RPA.Browser.Selenium
 
 *** Tasks ***
 Open Verkkokauppa.com
-    Log    Done.
+    Open verkkokauppa website
+    Log in
 
 
 *** Keywords ***
 Open Verkkokauppa website
-    Open Available Browser
-    Go To    https://www.verkkokauppa.com/
+    Open Available Browser    https://www.verkkokauppa.com/
+
+Log in
+    Input Text    username    ${USERNAME}
