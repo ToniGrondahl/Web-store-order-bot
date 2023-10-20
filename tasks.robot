@@ -25,7 +25,7 @@ Log in
     Click Button    login-button
 
 Search for products on the website
-    Input Text    input aria-label    playstation
-    Click Button    accessibility-search-button
+    Input Text    input aria-label    playstation 5
+    Click Button    name="submit"
 
 Select wanted products
