@@ -24,5 +24,5 @@ Log in
     Click Button    login-button
 
 Search for products on the website
-    Input Text    type="search"    playstation 5
+    Input Text    name:query    playstation 5
     Click Button    name="submit"
