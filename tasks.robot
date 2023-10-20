@@ -25,5 +25,5 @@ Log in
     Click Button    login-button
 
 Search for products on the website
-    Input Text    search bar    playstation
+    Input Text    input aria-label    playstation
     Click Button    accessibility-search-button
