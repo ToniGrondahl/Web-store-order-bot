@@ -12,7 +12,6 @@ Open Verkkokauppa.com
 
 Product Search and Selection:
     Search for products on the website
-    Select wanted products
 
 
 *** Keywords ***
@@ -27,5 +26,3 @@ Log in
 Search for products on the website
     Input Text    input aria-label    playstation 5
     Click Button    name="submit"
-
-Select wanted products
