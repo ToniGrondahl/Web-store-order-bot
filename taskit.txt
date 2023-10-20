@@ -1,11 +1,11 @@
-    Login or Authentication:
+    Login or Authentication: ✓
         Automate the login process to access your user account on the web store.
 
-    Product Search and Selection:
+    Product Search and Selection: ✓
         Search for the desired products on the website.
         Select products based on criteria you provide, such as keywords, categories, or specific item numbers.
 
-    Add to Cart:
+    Add to Cart: ✓
         Automate the process of adding selected products to the shopping cart.
 
     Shopping Cart Interaction:
