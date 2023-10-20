@@ -16,3 +16,5 @@ Open Verkkokauppa website
 
 Log in
     Input Text    username    ${USERNAME}
+    Input Password    password    xxx
+    Click Button    login-button
