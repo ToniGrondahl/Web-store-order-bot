@@ -3,5 +3,5 @@ Documentation       Template robot main suite.
 
 
 *** Tasks ***
-Minimal task
+Open Verkkokauppa.com
     Log    Done.
