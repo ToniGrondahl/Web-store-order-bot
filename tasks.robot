@@ -20,7 +20,7 @@ Open Verkkokauppa website
     Open Available Browser    https://www.verkkokauppa.com/
 
 Log in
-    Input Text    username    ${laurif.forss@gmail.com}
+    Input Text    username    laurif.forss@gmail.com
     Input Password    password    Koulutöitä1
     Click Button    login-button
 
