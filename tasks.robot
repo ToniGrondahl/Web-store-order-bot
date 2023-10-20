@@ -24,5 +24,5 @@ Log in
     Click Button    login-button
 
 Search for products on the website
-    Input Text    input aria-label    playstation 5
+    Input Text    type="search"    playstation 5
     Click Button    name="submit"
