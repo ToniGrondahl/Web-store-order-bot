@@ -1,14 +1,4 @@
-# Template: Robot Framework - Minimal
+# Web Store Order Bot Project
 
-This is the simplest template to start from.
-
-- Get started from a simple task template in `tasks.robot`.
-  - Uses [Robot Framework](https://robocorp.com/docs/languages-and-frameworks/robot-framework/basics) syntax.
-- You can configure your robot `robot.yaml`.
-- You can configure dependencies in `conda.yaml`.
-
-## Learning materials
-
-- [Robocorp Developer Training Courses](https://robocorp.com/docs/courses)
-- [Documentation links on Robot Framework](https://robocorp.com/docs/languages-and-frameworks/robot-framework)
-- [Example bots in Robocorp Portal](https://robocorp.com/portal)
+This project was made as part of an RPA course at Laurea University of Applied Sciences. 
+The purpose and functionality of this robot is to make the order and checkout process in an online store faster and more convenient. It navigates to an online shopping website, adds the desired item to the cart, and fills out the necessary customer details and completes the checkout process.
