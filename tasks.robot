@@ -4,19 +4,10 @@ Documentation       Web store order checkout bot. Places orders at https://www.p
 Library             RPA.Browser.Selenium    auto_close=${FALSE}
 Library             Process
 Library             RPA.Desktop
-Library             RPA.Email.ImapSmtp    smtp_server=smtp.gmail.com    smtp_port=587
-
-Task Setup          Authorize    account=${GMAIL_ACCOUNT}    password=${GMAIL_PASSWORD}
-
-
-*** Variables ***
-${GMAIL_ACCOUNT}        ACCOUNT_NAME
-${GMAIL_PASSWORD}       APP_PASSWORD
-${RECIPIENT_ADDRESS}    RECIPIENT
-${BODY_IMG1}            ${IMAGEDIR}${/}approved.png
-${BODY_IMG2}            ${IMAGEDIR}${/}invoice.png
-${EMAIL_BODY}           <h1>Heading</h1><p>Status: <img src='approved.png' alt='approved image'/></p>
-...                     <p>INVOICE: <img src='invoice.png' alt='invoice image'/></p>
+Library             RPA.JSON
+# Library    DateTime
+# Library    RPA.Email.ImapSmtp    smtp_server=smtp.mail.outlook.com    smtp_port=587    imap_server=outlook.office365.com
+# Task Setup    Authorize    account=%{EMAIL}    password=%{PASSWORD}
 
 
 *** Tasks ***
@@ -38,22 +29,15 @@ Choose payment
 Other details
     Fill details
 
-Sending email
-    Send Message    sender=${GMAIL_ACCOUNT}
-    ...    recipients=${RECIPIENT_ADDRESS}
-    ...    subject=Message from RPA Robot
-    ...    body=RPA Robot message body
+Print Message
+    Log To Console    Robot has completed the order process!
 
-Sending HTML Email With Image
-    [Documentation]    Sending email with HTML content and attachment
-    Send Message
-    ...    sender=${GMAIL_ACCOUNT}
-    ...    recipients=${RECIPIENT_ADDRESS}
-    ...    subject=HTML email with body images (2) plus one attachment
-    ...    body=${EMAIL_BODY}
-    ...    html=${TRUE}
-    ...    images=${BODY_IMG1}, ${BODY_IMG2}
-    ...    attachments=example.png
+# Sending email
+#    Send Message    sender=%{EMAIL}
+#    ...    recipients=houiyksvbtaxevdhqh@cazlg.com
+#    ...    subject=Message from RPA Robot
+#    ...    body=Order confirmed
+#    ...    attachments=orderready.png
 
 
 *** Keywords ***
@@ -82,4 +66,4 @@ Choose payment option
 
 Fill details
     Input Text    xpath://*[@id="ContentPlaceHolder1_ContentPlaceHolder1_txtOrderNote"]    Ovikoodi: 1234
-    Screenshot    filename=orderready.png
+    # Screenshot    filename=orderready.png
