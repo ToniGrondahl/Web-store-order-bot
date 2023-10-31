@@ -1,90 +1,56 @@
 *** Settings ***
-Documentation       Web store order checkout bot. Places orders at https://www.prisma.fi.
+Documentation       Web store order checkout bot. Places orders at https://www.pizzaspeed.fi
 
 Library             RPA.Browser.Selenium    auto_close=${FALSE}
 Library             Process
 Library             RPA.Desktop
-Library             RPA.Email.Exchange
-# *** Variables ***
-# ${URL}    https://epayment.nets.eu/terminal/default.aspx?merchantId=947981&transactionId=0d4c0b2d2cfa4c59983629c43af84318
-# ${BROWSER}    Chrome
-# ${SAVE_SCREENSHOT_LOCATION}    /tonigrondahl/pictures
-# ${EMAIL_FROM}    grondahltoni@gmail.com
-# ${EMAIL_TO}    toni.grondahl@outlook.com
-# ${EMAIL_SUBJECT}    Order screenshot
-# ${EMAIL_BODY}    <h1>Heading</h1><p>Status:</p>
+Library             RPA.Email.ImapSmtp
 
 
 *** Tasks ***
-Open Prisma.fi
-    Open prisma website
+Open website
+    Open pizza speed website
 
-Accept cookies
-    Close the cookies modal by selecting accept
-
-Product Search and Selection
-    Search for products on the website
-
-# Availability
-    # Limit based on availability
+Click order
+    Click order online
 
 Add to cart
     Add the selected item to the cart
 
-Fill customer details
+Fill in customer details
     Fill the form
 
-# Capture Screenshot and Send it Through Email
-#    Open Browser    ${URL}    ${BROWSER}
-#    Sleep    2s
-#    Capture Page Screenshot    ${SAVE_SCREENSHOT_LOCATION}
-#    Send Email With Screenshot    ${EMAIL_FROM}    ${EMAIL_TO}    ${EMAIL_SUBJECT}    ${SAVE_SCREENSHOT_LOCATION}
-#    [Teardown]    Close Browser
+Choose payment
+    choose payment option
+
+Other details
+    Fill details
 
 
 *** Keywords ***
-Open Prisma website
-    Open Available Browser    https://www.prisma.fi/
+Open pizza speed website
+    Open Available Browser    www.pizzaspeed.fi
+    Go To    https://pizzaspeed.cityfood.fi/AllProducts.aspx
 
-Close the cookies modal by selecting accept
-    Click Button    xpath://*[@id="uc-center-container"]/div[2]/div/div/div/div/button[2]
-
-Search for products on the website
-    Input Text    xpath://*[@id="__next"]/header/div/div[2]/form/div[1]/input    playstation 5
-    Go To    https://www.prisma.fi/haku?search=playstation%205
-    CLick Element    xpath://*[@id="main-content"]/div[1]/div[1]/div[2]/div/ul/li[1]/div
-
-# Limit based on availability
-    # Click Button    xpath://*[@id="main"]/div/div[1]/div[1]/div/span/div/button[4]
-    # Click Element    xpath://*[@id="accordion-filters-section-AvailableImmediatelyAllChannels"]/ol/li[1]/label/span[2]
-    # Click Button    xpath://*[@id="search-filters"]/div/footer/button[2]
+Click order online
+    Click Element    xpath://*[@id="divProductsAjax"]/div[1]/div[2]/div[2]
+    Click Element    xpath://*[@id="btnAdd2BasketModal"]
 
 Add the selected item to the cart
-    Click Button    id:add-to-cart-button
-    Click Element    xpath://*[@id="__next"]/header/div/a
-    Go To    https://www.prisma.fi/tilaus
+    Click Element    xpath://*[@id="navbar"]/ul/li[4]/a
+    Go To    https://pizzaspeed.cityfood.fi/Order.aspx
+    Sleep    5s
 
 Fill the form
-    Input Text    xpath://input[@id="input-firstName"]    Toni
-    Input Text    xpath://input[@id="input-lastName"]    Gröndahl
-    Input Text    xpath://input[@id="input-email"]    toni.grondahl@outlook.com
-    Input Text    xpath://input[@id="input-telephoneNumber"]    0445476298
-    Input Text    xpath://input[@id="input-streetName"]    Hernetie 4
-    Input Text    xpath://input[@id="input-postCode"]    00130
-    Input Text    xpath://input[@id="input-city"]    Vantaa
-    CLick Button    xpath://button[@data-test-id="contact-information-step-continue-button"]
+    Input Text    xpath://*[@id="ContentPlaceHolder1_ContentPlaceHolder1_txtFirstname"]    Toni
+    Input Text    xpath://*[@id="ContentPlaceHolder1_ContentPlaceHolder1_txtLastname"]    Gröndahl
+    Input Text    xpath://*[@id="ContentPlaceHolder1_ContentPlaceHolder1_txtPhone"]    toni.grondahl@outlook.com
+    Input Text    xpath://*[@id="ContentPlaceHolder1_ContentPlaceHolder1_txtEmail"]    0445476298
+    Input Text    xpath://*[@id="ContentPlaceHolder1_ContentPlaceHolder1_AddressForm_pacinput"]    Hernetie 4 A 9
 
-# *** Tasks ***
-# Sending email
-#    Send Message    sender=${GMAIL_ACCOUNT}
-#    ...    recipients=${RECIPIENT_ADDRESS}
-#    ...    subject=Message from RPA Robot
-#    ...    body=RPA Robot message body
+Choose payment option
+    Click Element    xpath://*[@id="ContentPlaceHolder1_ContentPlaceHolder1_rblPaymentType"]/tbody/tr[2]/td/label
 
-# *** Keywords ***
-# Send Email With Screenshot
-#    [Arguments]    ${email_from}    ${email_to}    ${email_subject}    ${screenshot_location}
-#    Connect To Exchange Server    /path/to/credentials.txt
-#    Add File To Email Attachments    ${screenshot_location}
-#    Send Email    ${email_from}    ${email_to}    ${email_subject}    body=This email contains a screenshot of the current webpage.
-# html_body=This email contains a screenshot of the current webpage.    attachment_name=screenshot.png
+Fill details
+    Input Text    xpath://*[@id="ContentPlaceHolder1_ContentPlaceHolder1_txtOrderNote"]    Ovikoodi: 1234
+    Screenshot    filename=orderready.png
