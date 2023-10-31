@@ -36,9 +36,7 @@ Close the cookies modal by selecting accept
 Search for products on the website
     Input Text    xpath://*[@id="__next"]/header/div/div[2]/form/div[1]/input    playstation 5
     Go To    https://www.prisma.fi/haku?search=playstation%205
-    # Click Button    xpath://*[@id="__next"]/header/div/div[2]/form/div/button[2]
-    Go To    https://www.prisma.fi/tuotteet/110670797/playstation-5-standard-edition-dualsense-lisaohjain-110670797
-    # Click Button    xpath://*[@id="main-content"]/div[1]/div[2]/aside/div/div[1]/div[2]/button
+    CLick Element    xpath://*[@id="main-content"]/div[1]/div[1]/div[2]/div/ul/li[1]/div
 
 # Limit based on availability
     # Click Button    xpath://*[@id="main"]/div/div[1]/div[1]/div/span/div/button[4]
@@ -54,9 +52,8 @@ Fill the form
     Input Text    xpath://input[@id="input-firstName"]    Toni
     Input Text    xpath://input[@id="input-lastName"]    Gröndahl
     Input Text    xpath://input[@id="input-email"]    toni.grondahl@outlook.com
-    Scroll Element Into View    xpath://input[@id="input-city"]
     Input Text    xpath://input[@id="input-telephoneNumber"]    0445476298
     Input Text    xpath://input[@id="input-streetName"]    Hernetie 4
     Input Text    xpath://input[@id="input-postCode"]    00130
     Input Text    xpath://input[@id="input-city"]    Vantaa
-    Click Button    xpath://*[@id="main-content"]/div[1]/div[1]/div[2]/div[1]/button
+    CLick Button    xpath://button[@data-test-id="contact-information-step-continue-button"]
